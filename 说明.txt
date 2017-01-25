@@ -1,0 +1,1 @@
+Spring4.0.2Hibernate4.3Freemarker2.3.20  这个项目是可以运行的。
