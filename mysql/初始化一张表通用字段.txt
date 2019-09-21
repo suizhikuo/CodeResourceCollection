@@ -1,0 +1,47 @@
+/*
+Navicat Premium Data Transfer
+
+Source Server         : 10.99.110.146
+Source Server Type    : MySQL
+Source Server Version : 50639
+Source Host           : 10.99.110.146:3306
+Source Schema         : b2bdb
+
+Target Server Type    : MySQL
+Target Server Version : 50639
+File Encoding         : 65001
+
+Date: 12/03/2019 20:21:45
+*/ 
+SET NAMES utf8mb4;
+
+SET FOREIGN_KEY_CHECKS = 0;-- ----------------------------
+-- Table structure for tmepmodel_tmepTable
+-- ----------------------------
+-- DROP TABLE IF EXISTS `tmepmodel_tmepTable`;
+CREATE TABLE `tmepmodel_tmepTable` (
+`id` BIGINT ( 11 ) NOT NULL AUTO_INCREMENT,
+`is_deleted` INT ( 1 ) NULL DEFAULT NULL COMMENT '该条信息的删除状态	is代表是否，（0：初始状态，1：删除）',
+`create_by` VARCHAR ( 50 ) CHARACTER 
+SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人	',
+`create_time` TIMESTAMP ( 0 ) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建日期',
+`update_by` VARCHAR ( 50 ) CHARACTER 
+SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
+`update_time` TIMESTAMP ( 0 ) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新日期',
+`remark` VARCHAR ( 255 ) CHARACTER 
+SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
+PRIMARY KEY ( `id` ) USING BTREE 
+) ENGINE = INNODB AUTO_INCREMENT = 1 CHARACTER 
+SET = utf8 COLLATE = utf8_general_ci COMMENT = '表备注' ROW_FORMAT = Compact;
+
+SET FOREIGN_KEY_CHECKS = 1;-- 添加必须字段
+ALTER TABLE bo_c_bom_product_config_mapping ADD `id` INT ( 11 ) NOT NULL COMMENT '主键（自增）';
+ALTER TABLE bo_c_bom_product_config_mapping ADD `is_deleted` INT ( 1 ) NULL DEFAULT NULL COMMENT '该条信息的删除状态	is代表是否，（0：初始状态，1：删除）';
+ALTER TABLE bo_c_bom_product_config_mapping ADD `create_by` VARCHAR ( 50 ) CHARACTER 
+SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人	';
+ALTER TABLE bo_c_bom_product_config_mapping ADD `create_time` TIMESTAMP ( 0 ) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建日期';
+ALTER TABLE bo_c_bom_product_config_mapping ADD `update_by` VARCHAR ( 50 ) CHARACTER 
+SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人';
+ALTER TABLE bo_c_bom_product_config_mapping ADD `update_time` TIMESTAMP ( 0 ) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新日期';
+ALTER TABLE bo_c_bom_product_config_mapping ADD `remark` VARCHAR ( 255 ) CHARACTER 
+SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注';
