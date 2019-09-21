@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+<head>
+<meta charset='utf-8'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<meta content='码云,代码托管,git,Git@OSC,开源,项目管理,版本控制,开源代码,代码分享,项目协作,开源项目托管,免费代码托管,Git代码托管,Git托管服务' name='Keywords'>
+<meta content='码云是开源中国社区团队推出的基于Git的快速的、免费的、稳定的在线代码托管平台,不限制私有库和公有库数量.' name='Description'>
+<title>
+码云 - 开源中国
+</title>
+<link href="/assets/favicon-f6562a1bc6a110e32367f6e0cab4ba89.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<meta content='git.oschina.net/sanluan/PublicCMS-preview git https://git.oschina.net/sanluan/PublicCMS-preview.git' name='go-import'>
+<link href="/assets/application-709745cd278e5e9e941ad58ab4194e59.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="/assets/application-09c46c6426f0c08ce3b91ffe7e7538d6.js" type="text/javascript"></script>
+<script src="/assets/lib/jquery.timeago.zh-CN-713860ec36c1bc4d6aa16af7e6f6e2f5.js" type="text/javascript"></script>
+
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="Cz28DaW4Wk+U7y0IXu1fpPrcbBbh5FW8yN9BGQa+Hd8=" name="csrf-token" />
+<script type="text/javascript">
+//<![CDATA[
+window.gon = {};gon.gravatar_url="http://www.gravatar.com/avatar/%{hash}?s=%{size}&d=mm";gon.http_clone="https://git.oschina.net/sanluan/PublicCMS-preview.git";gon.user_project="sanluan/PublicCMS-preview";gon.message="sanluan";gon.manage_branch="\u7ba1\u7406\u5206\u652f";gon.manage_tag="\u7ba1\u7406\u6807\u7b7e";gon.enterprise_id=0;
+//]]>
+</script>
+<!--[if lt IE 10]>
+<script>
+    window.location.href = "/incompatible.html";
+</script>
+<![endif]-->
+</head>
+
+<script src="/assets/projects/app-a30f884f43c9031c48048844a21c5ba2.js" type="text/javascript"></script>
+<body class='ui_basic project'>
+<script>
+  $(function() {
+    GitLab.GfmAutoComplete.dataSource = "/sanluan/PublicCMS-preview/autocomplete_sources"
+    GitLab.GfmAutoComplete.Emoji.assetBase = '/assets/emoji'
+    GitLab.GfmAutoComplete.setup();
+  });
+</script>
+
+<header class='ui grey menu grid page fixed noborder' id='git-header-nav'>
+<div class='git-header'>
+<div class='item gitosc-logo' style='padding:0;'>
+<a href="/"><img class='ui inline image' src='/logo.svg' style='height: 30px; width: 90px; padding-left: 0.5em;'>
+</a></div>
+<a href="/explore/recommend" class="item" style="font-size: 1.05rem">发现</a>
+<a href="http://git.mydoc.io/" class="item" style="font-size: 1.05rem" target="_blank">帮助</a>
+<a href="/oschina/git-osc/issues" class="item" style="font-size: 1.05rem">建议</a>
+<a href="/enterprises" class="item" style="font-size: 1.05rem" target="_blank">企业服务
+<sup style='color: #CA1212;'>
+new
+</sup>
+</a><form accept-charset="UTF-8" action="/search" class="item search_padding" id="projects-search-form" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<div class='ui icon left mini input'>
+<input autocomplete="off" id="search_top-search-input" name="search" placeholder="搜索项目..." style="border: 0px; background-color: #efefef" type="text" />
+<i class='search link icon' id='projects-search'></i>
+<input id="group_id" name="group_id" type="hidden" />
+<input id="project_id" name="project_id" type="hidden" value="796609" />
+</div>
+</form>
+
+<script>
+  $('#projects-search').click(function(){
+     $('#projects-search-form').submit();
+  });
+  // Author: Zoker, Date: 15.02.15, Note: 搜索框焦点背景色更改
+  $('#search_top-search-input').click(function(){
+    document.getElementById("search_top-search-input").style.backgroundColor = '#eaeaea'
+  });
+  $('#search_top-search-input').blur(function(){
+    document.getElementById("search_top-search-input").style.backgroundColor = '#efefef'
+  });
+  $('#projects-search-form').submit(function(){
+    query_name = $('.code-search-input').val()
+    if(query_name != undefined && $.trim(query_name).length < 5){
+      $('#search_top-search-input').focus();
+      alert("代码搜索关键字不能少于5个");
+      return false;
+    }
+  })
+  
+  // End
+</script>
+
+
+<div class='right menu userbar' id='git-nav-user-bar'>
+<div class='ui dropdown link item'>
+<i class='add icon'></i>
+<div class='menu'>
+<a href="/projects/new" class="item"><i class='add square icon'></i>
+新建项目
+</a><a href="/projects/oauth_github" class="item"><i class='github icon'></i>
+Github导入
+</a><a href="/itbase/codes/new" class="item"><i class='code icon'></i>
+新建代码片段
+</a><a href="/organizations/new" class="item"><i class='group icon'></i>
+新建组织
+</a><a href="/create_enterprise" class="item"><i class='icon iconfont icon-enterprise'></i>
+开通企业
+</a></div>
+</div>
+<a href="/profile" class="item" title="个人资料"><i class='user icon'></i>
+</a><a href="/notifications" class="item notifications" id="noti"><i class='mail icon'></i>
+<div class='floating ui red circular label' id='unread-noti'></div>
+</a><a href="/logout" class="item" data-method="delete" rel="nofollow" title="退出登录"><i class='sign out icon'></i>
+</a><a href="/" class="profile-pic item"><img alt="80689_itbase" class="ui avatar image" id="git-nav-user" src="/uploads/89/80689_itbase.png?1395669903" title="控制面板" />
+</a><script>
+  (function() {
+    $.getJSON('/notifications/count', function(data) {
+      var title;
+  
+      if (data.count > 0) {
+        title = data.notifications + ' 未读通知 ' + data.messages + ' 条私信';
+        $('#noti').attr('title', title);
+        return $('#unread-noti').text(data.count).show();
+      }
+    });
+  
+  }).call(this);
+</script>
+
+</div>
+</div>
+</header>
+<style>
+  .bdshare-slide-button{right:65px !important}.bdshare-slide-list-box{bottom:50%;margin-bottom:-180px}.bdshare-slide-style-r6.bdshare-slide-button-box{right:70px !important;z-index:1 !important;width:32px !important;height:32px !important;bottom:50%;top:initial !important}.item.vertically.fitted.title{padding:3px 10px !important}
+</style>
+<script>
+  var $dropdown = $('#git-nav-user-bar .ui.dropdown');
+  $dropdown.dropdown({on: 'hover'});
+  
+  if($(window).width() < 500){
+    $(".ui.menu.fixed").css("position", "absolute")
+    $('#git-header-nav').css("width", "1050px");
+  }
+  
+  $(document).ready(function () {
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":["weixin","tsina","qzone","tqq","mshare","sqq"],"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"right","bdTop":"100"},"image":{"viewList":["weixin","tsina","qzone","tqq","renren"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","tsina","qzone","tqq","renren"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/bd_share/static/api/js/share.js'];
+    changCssWithStatus();
+  })
+  
+  var emailStatus, commentStatus, gotopStatus;
+  
+  function changCssWithStatus() {
+    emailStatus = $("#project-user-message").length;
+    commentStatus = $("#home-comment").length;
+    gotopStatus = $("#gotop").css("display");
+    if (emailStatus == 0 && commentStatus > 0 && gotopStatus == "block") {
+      $("#home-comment").css("margin-bottom","-48px");
+      $("#gotop").css("margin-bottom","-83px");
+    } else if (emailStatus > 0 && commentStatus == 0 && gotopStatus == "block") {
+      $("#gotop").css("margin-bottom","-77px");
+    } else if (emailStatus == 0 && commentStatus > 0 && gotopStatus == "none") {
+      $("#home-comment").css("margin-bottom","-48px");
+    } else if (emailStatus == 0 && commentStatus == 0 && gotopStatus == "block") {
+      $("#gotop").css("margin-bottom","-38px");
+    }
+  }
+  
+  $(document).on({
+    mouseenter: function(){
+      $(".bdshare-slide-bottom").hide();
+      $(".bdshare-slide-list-box").css("right","100px");
+      $(".bdshare-slide-list-box").css("position","fixed");
+  }}, 'a.bdshare-slide-button');
+  
+  var c_start;
+  c_start = document.cookie.indexOf("remote_way=");
+  if (c_start == -1) {
+    setCookie('remote_way', "http", 360);
+  }
+  function setCookie(c_name, value, expiredays) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + expiredays);
+    document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires = " + exdate.toGMTString()) + ("; path = /");
+  }
+</script>
+
+<div class='ui grid page fixed-notice-messages'>
+<div class='sixteen wide column'>
+<div class='ui hide green message' id='project-ok-msg'>
+私信发送成功
+</div>
+<div class='flash-messages' id='messages-container'></div>
+</div>
+</div>
+<script>
+  (function() {
+    var notify_content, notify_options, setCookie, template;
+  
+    template = '<div data-notify="container" class="ui {0} message" role="alert">' + '<i data-notify="dismiss" class="close icon"></i>' + '<span data-notify="message">{2}</span>' + '</div>';
+  
+    notify_content = {
+      "message": "\u9a8c\u8bc1\u7801\u4e0d\u6b63\u786e\uff0c\u8bf7\u91cd\u65b0\u8f93\u5165\uff01"
+    };
+  
+    notify_options = {
+      "type": "error"
+    };
+  
+    if (notify_content) {
+      notify_options.delay = 3000;
+      notify_options.template = template;
+      notify_options.offset = {
+        x: 10,
+        y: 30
+      };
+      notify_options.element = '#messages-container';
+      $.notify(notify_content, notify_options);
+    }
+  
+    setCookie = function(name, value) {
+      var Days, exp;
+  
+      Days = 360;
+      exp = new Date;
+      exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+      document.cookie = name + '=' + escape(value) + ';expires=' + exp.toGMTString();
+    };
+  
+    $('#remove-bulletin').on('click', function() {
+      setCookie('remove_bulletin', 'no_national_ad');
+      $('#git-bulletin').hide();
+    });
+  
+  }).call(this);
+</script>
+
+<div class='ui grid page middle aligned' style='margin-top: 1rem;'>
+<a data-traceid="aliyun_project_top" data-tracepid="project_header"  href= http://click.aliyun.com/m/9732/ target='_blank' > <img src='//git.oschina.net/uploads/gitimages/1485164564.jpg' width='1020' height='60'> </a>
+</div>
+<!--[if lt IE 10]>
+<script>
+  window.location.href = "/incompatible.html"
+</script>
+<![endif]-->
+
+<div class='ui grid page'>
+<div class='row'>
+<div class='sixteen wide column'>
+<div class='git-project-header'>
+<div class='ui info icon floating message green' id='fetch-ok' style='display: none'>
+<i class='info icon status-icon'></i>
+<div class='content'>
+<div class='header status-title'>
+代码拉取完成
+</div>
+<span class='status-message'>
+系统将自动刷新
+</span>
+</div>
+</div>
+<div class='git-project-header-actions'>
+<span class='ui mini buttons basic'>
+<a class='ui button donate' id='project-donate' title='捐赠'>
+捐赠
+</a>
+<a class='ui button social-count' href='/sanluan/PublicCMS-preview#project-donate-overview'>0</a>
+<div class='ui small modal project-donate-modal'>
+<i class='close icon'></i>
+<div class='header'>
+捐赠项目 PublicCMS-preview
+</div>
+<div class='content'>
+项目的主人没有开启捐赠功能，快通知他让他开启吧！
+<a id='send-message-to-author'>
+&ensp;&ensp;
+发送私信 &gt;&gt;
+</a>
+</div>
+<div class='actions' id='modal-act'>
+<div class='message'>
+</div>
+<div class='buttons'>
+<div class='ui green button'>
+关闭
+</div>
+</div>
+</div>
+</div>
+<div class='ui small modal wepay-qrcode'>
+<div class='header'>
+扫描微信二维码支付
+<span class='wepay-cash'></span>
+</div>
+<div class='content weqcode-center'>
+<img id='wepay-qrcode' src=''>
+</div>
+<div class='actions'>
+<div class='ui negative button'>取消</div>
+<div class='ui button positive right'>
+支付完成
+</div>
+</div>
+</div>
+</span>
+<script>
+  (function () {
+    var $modal = $('.project-donate-modal');
+    var $btnSubmit = $modal.find('.ui.button.positive');
+  
+    $modal.find('.radio.checkbox').checkbox();
+    $modal.find('input[name="ensure_cash"]').on('change', function () {
+      var $this = $(this);
+      $this.parents('.card-fields').find('.checked').removeClass('checked');
+      $this.parent().addClass('checked');
+      var $input = $modal.find('.field-custom-money-input');
+      var $label = $modal.find('.field-custom-money-label');
+      if ($this.val() === 'manual') {
+        $label.removeClass('hide');
+        $input.removeClass('hide').find('input').focus();
+      } else {
+        $label.addClass('hide');
+        $input.addClass('hide');
+      }
+    });
+    $modal.find('input[name="pay_type"]').on('change', function () {
+      var $this = $(this).parent();
+      $this.parents('.card-fields').find('.checked').removeClass('checked');
+      $this.addClass('checked');
+    });
+    $btnSubmit.click(function() {
+      var cash;
+      var nameReg = /.{2,36}/;
+      var msgReg = /.{4,256}/;
+      var $msg = $modal.find('[name="msg"]');
+      var $name = $modal.find('[name="name"]');
+      var token = $('meta[name="csrf-token"]').attr('content');
+      if($('input[name="ensure_cash"]:checked').val() == 'manual') {
+        cash = $('#manual_cash').val();
+      }else{
+        cash = $('input[name="ensure_cash"]:checked').val();
+      }
+      var data = {
+        msg: $msg.val(),
+        name: $name.val(),
+        cash: cash,
+        authenticity_token: token
+      };
+      if (isNaN(cash) || cash < 1 || cash > 50000) {
+        $('#manual_cash').parent().addClass('error');
+        return;
+      }
+      $('#manual_cash').parent().removeClass('error');
+      if (!nameReg.test(data.name)) {
+        $name.parent().addClass('error');
+        return;
+      }
+      $name.parent().removeClass('error');
+      if (!msgReg.test(data.msg)) {
+        $msg.parent().addClass('error');
+        return;
+      }
+      $msg.parent().removeClass('error');
+      var $dimmer = $modal.find('.dimmer').addClass('active');
+      $btnSubmit.addClass('disabled').prop('disabled', true);
+      if ($modal.find('input[name="pay_type"]:checked').val() == 'wepay') {
+        $.ajax({
+          url: "/sanluan/PublicCMS-preview/wepay",
+          data: data,
+          type: 'POST',
+          success: function(data) {
+            if (data.result === 'fail') {
+              alert('无法完成支付！原因：' + data.msg);
+              window.location.reload();
+              return;
+            }
+            var money = data.money + ' 元';
+            var base64data = 'data:image/png;base64,' + data.data.base64QRCode;
+            $('#wepay-qrcode').attr('src', base64data);
+            $('.wepay-cash').text(money);
+            $modal.modal('hide');
+            $('.ui.modal.wepay-qrcode').modal('show');
+            $dimmer.removeClass('active');
+            $btnSubmit.removeClass('disabled').prop('disabled', false);
+          },
+          error: function (xhr) {
+            if (xhr.status == 401) {
+              alert('需要先登录账号才能完成支付！'); 
+              window.location.href = '/login';
+              return;
+            }
+            return alert('无法完成支付，请过一段时间后再试！');
+          }
+        });
+      } else {
+        $.ajax({
+          url: "/sanluan/PublicCMS-preview/alipay",
+          data: data,
+          type: 'POST',
+          success: function(data) {
+            if (data.result === 'fail') {
+              alert('无法完成支付！原因：' + data.msg);
+              window.location.reload();
+              return;
+            }
+            document.write(data.data.html);
+            $dimmer.removeClass('active');
+            $btnSubmit.removeClass('disabled').prop('disabled', false);
+          },
+          error: function () {
+            if (xhr.status == 401) {
+              alert('需要先登录账号才能完成支付！'); 
+              window.location.href = '/login';
+              return;
+            }
+            return alert('无法完成支付，请过一段时间后再试！');
+          }
+        });
+      }
+      return false;
+    });
+  })();
+</script>
+
+<span class='basic buttons mini ui watch-container'>
+<a href="/sanluan/PublicCMS-preview/unwatch" class="ui button unwatch" data-method="post" data-remote="true" rel="nofollow">Unwatch
+</a><a href="/sanluan/PublicCMS-preview/watch" class="ui button watch" data-method="post" data-remote="true" rel="nofollow">Watch
+</a><a href="/sanluan/PublicCMS-preview/watchers" class="ui button social-count" title="53">53
+</a></span>
+<span class='basic buttons mini star-container ui'>
+<a href="/sanluan/PublicCMS-preview/unstar" class="ui button unstar" data-method="post" data-remote="true" rel="nofollow">Unstar
+</a><a href="/sanluan/PublicCMS-preview/star" class="ui button star" data-method="post" data-remote="true" rel="nofollow">Star
+</a><a href="/sanluan/PublicCMS-preview/stargazers" class="ui button social-count" title="100">100
+</a></span>
+<span class='ui buttons basic fork-container'>
+<a href="#" class="ui button  fork " id="fork-top-button">Fork
+</a><a href="/sanluan/PublicCMS-preview/members" class="ui button count" title="31">31
+</a></span>
+</div>
+<h2 class='ui header remote-message'>
+<i class='octicon octicon-repo'></i>
+<span><span class="project-title"><a href="/sanluan" class="author " title="kerneler">kerneler</a> / <a href="/sanluan/PublicCMS-preview" class="repository" style="padding-bottom: 0px" title="PublicCMS-preview">PublicCMS-preview</a></span><span class="project-badges"><a href="/languages/Java" class="ui small label" id="project-language" target="_blank">Java</a>
+<style>
+  #project-language{
+    font-weight: bold;
+  }
+</style>
+<script>
+  var languages = $('#project-languages').html();
+  $("#project-language").popup({html: languages,variation: 'flowing',lastResort: 'bottom center'});
+</script>
+<a href="/repositories/featured" id="recomment_icon_1" title="此项目已被推荐"><img alt="Recommend" class="ui inline mini image" id="recom_image" src="/assets/recommend-4148c817e0ebf200acaeb9da3066e806.svg" />
+</a><style>
+  #recomment_icon_0{
+    filter:Gray;
+    -webkit-filter: grayscale(100%);
+  }
+  #recom_image{
+    margin-bottom: 2px;
+  }
+</style>
+<script>
+  $(document).ready(function(){
+    $('.self_rec_class').attr('href','javascript:void(0)');
+    $('.self_rec_class').popup({
+      position : 'right center',
+      title : '审核中'
+    });
+    $('.rec_class').popup({
+      position : 'right center',
+      title : '自荐'
+    });
+  });
+</script>
+</span></span>
+</h2>
+</div>
+</div>
+</div>
+<div class='row' id='import-result-message' style='padding-top: 0px; display: none'>
+<div class='sixteen wide column'>
+<div class='ui icon yellow message status-color'>
+<i class='info icon status-icon' style='width:60px;padding-right:12px;'></i>
+<i class='close icon'></i>
+<div class='header status-title'>
+同步状态
+</div>
+<span class='status-message'></span>
+</div>
+</div>
+</div>
+<div class='row' id='fork-message' style='padding-top: 0px; display: none'>
+<div class='sixteen wide column'>
+<div class='ui info icon floating message status-color'>
+<i class='help icon status-icon'></i>
+<div class='content'>
+<div class='header status-title'>
+代码Fork？
+</div>
+<span class='status-message'>
+Fork 将在后台执行，是否继续？
+<div class='ui mini buttons'>
+<div class='ui button positive' id='fork-modal-accept'>
+确定
+</div>
+<div class='or'></div>
+<div class='ui button close' id='fork-modal-cancel'>
+取消
+</div>
+</div>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    var glo_is_fork;
+  
+    glo_is_fork = false;
+  
+    this.title_project_path = "PublicCMS-preview";
+  
+    this.title_fork_url = "/sanluan/PublicCMS-preview/sync_fork";
+  
+    $('#fork-top-button').click(function(f) {
+      f.preventDefault();
+      if (!glo_is_fork) {
+        $('#fork-message').show();
+        $('#fork-modal-accept').click(function() {
+          var form, input1;
+  
+          glo_is_fork = true;
+          form = $("<form></form>");
+          form.attr('action', "/itbase/fork_project/sanluan/PublicCMS-preview");
+          form.attr('method', 'post');
+          input1 = $("<input type='hidden' name='authenticity_token' />");
+          input1.attr('value', $('meta[name="csrf-token"]').attr('content'));
+          form.append(input1);
+          form.appendTo("body");
+          form.css('display', 'none');
+          form.submit();
+          return $('#fork-message').hide();
+        });
+        return $('#fork-modal-cancel').click(function() {
+          return $('#fork-message').hide();
+        });
+      }
+    });
+  
+  }).call(this);
+</script>
+<script>
+  (function() {
+    var $modalDonate;
+  
+    $modalDonate = $('.project-donate-modal').modal({
+      onApprove: function() {
+        return false;
+      }
+    });
+  
+    if ("" === 'true') {
+      $modalDonate.modal('show');
+    }
+  
+    $('#project-donate').on('click', function() {
+      return $modalDonate.modal('show');
+    });
+  
+    $('#send-message-to-author').on('click', function() {
+      $modalDonate.modal('hide');
+      return $('#project-user-message').trigger('click');
+    });
+  
+  }).call(this);
+</script>
+<style>
+  i.icon.loading {
+    height: 1em;
+    -webkit-animation: icon-loading 1.2s linear infinite;
+    animation: icon-loading 1.2s linear infinite;
+  }
+  .qrcode_cs{
+    float: left;
+  }
+  #git-project-title i.octicon.unlock{
+    position: inherit;
+    color: #4183c4;
+  }
+</style>
+
+<div class='ui grid page middle aligned' id='git-project-nav'>
+<div class='ui small secondary pointing menu' id='git-project-menu' style='text-align: center;'>
+<a href="/sanluan/PublicCMS-preview" class="item ">代码
+</a><a href="/sanluan/PublicCMS-preview/issues" class="item ">Issues
+<span class='ui mini label'>
+31
+</span>
+</a><a href="/sanluan/PublicCMS-preview/pulls" class="item ">Pull Requests
+<span class='ui mini label'>0</span>
+</a><a href="/sanluan/PublicCMS-preview/attach_files" class="item ">附件
+<span class='ui mini label'>1</span>
+</a><a href="/sanluan/PublicCMS-preview/wikis" class="item ">Wiki
+<span class='ui mini label'>1</span>
+</a><a href="/sanluan/PublicCMS-preview/pages" class="item ">Pages
+</a><a href="/sanluan/PublicCMS-preview/repository/stats/master" class="item ">统计
+</a><a href="/sanluan/PublicCMS-preview/quality_analyses/confirm_platform" class="item ">质量分析
+<i class='checkmark icon' style='color:green;font-size:10px'></i>
+</a><a href="/sanluan/PublicCMS-preview/paas/select_platform" class="item ">代码演示
+</a></div>
+</div>
+<script>
+  $('#git-versions.dropdown').dropdown();
+  $.ajax({
+    url:"/sanluan/PublicCMS-preview/access/add_access_log",
+    type:"GET"
+  });
+</script>
+
+<div class='ui grid page center aligned'>
+<div class='eleven wide column'>
+<h4 class='ui header'>
+请输入验证码
+</h4>
+<form accept-charset="UTF-8" action="/sanluan/PublicCMS-preview/repository/archive/master" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+<input id="ref" name="ref" type="hidden" value="master" />
+<div class='ui form segment'>
+<div class='inline field'>
+* 为了防止恶意下载，下载前请输入验证码。
+</div>
+<div class='inline field'>
+<div class='ui label' style='padding: 5px;'>
+<img alt="captcha" class="captcha_img" height="40" src="http://git.oschina.net/captcha?action=captcha&amp;i=1485265440" style="height: 28px; width: 125px; vertical-align:middle;" width="140" />
+</div>
+<input id="captcha" name="captcha" placeholder=" 验证码" type="text" value="" />
+<input class="ui button blue" name="commit" type="submit" value=" 下载" />
+</div>
+</div>
+</form>
+
+</div>
+</div>
+<script>
+  $(document).ready(function(){
+    $(".captcha_img").trigger("click");
+  });
+</script>
+
+<script>
+  Tree.initHighlightTheme('white')
+</script>
+<div class='pop' data-content='给项目拥有者发送私信' id='project-user-message'>
+<i class='mail icon'></i>
+</div>
+<div class='ui modal message-input'>
+<i class='close icon'></i>
+<div class='header'>给用户发送私信</div>
+<div class='content'>
+<textarea class='message-content' maxlength='250' placeholder='请在这里输入私信内容' style='padding:1em;width:100%;resize:none;'></textarea>
+</div>
+<div class='actions' id='modal-act'>
+<div class='ui black button'>
+取消
+</div>
+<div class='ui positive right labeled icon button' id='send-message'>
+发送
+<i class='checkmark icon'></i>
+</div>
+</div>
+</div>
+<style>
+  body.dimmable{
+    position: inherit !important;
+  }
+</style>
+<script>
+  (function() {
+    var sendMessage;
+  
+    $('.pop').popup({
+      position: 'bottom left'
+    });
+  
+    $('body').delegate('#project-user-message, #show_send_msg_btn', 'click', function() {
+      $('.message-content').val('');
+      return $('.message-input').modal({
+        onApprove: function() {
+          return sendMessage("");
+        }
+      }).modal('show');
+    });
+  
+    $('body').delegate('.set-msg-content', 'click', function() {
+      return $('.message-content').val('想请您喝杯咖啡，请您开启项目捐赠功能吧。');
+    });
+  
+    $('.message-content').on('keydown', function(e) {
+      if ((e.ctrlKey && e.keyCode === 13) || (e.metaKey && e.keyCode === 13)) {
+        $('#send-message').trigger('click');
+        return false;
+      }
+    });
+  
+    sendMessage = function(e) {
+      var content, username;
+  
+      content = $('.message-content').val();
+      if ($.trim(content).length === 0) {
+        alert("请输入私信内容");
+        return false;
+      } else {
+        username = gon.message;
+        return $.ajax({
+          url: "/" + username + "/message",
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+          },
+          type: 'POST',
+          data: {
+            content: content
+          },
+          success: function(data) {
+            if (data.status === 0) {
+              return alert("可能由于发送过于频繁,留言发送失败,请稍后再试");
+            } else {
+              $('#project-ok-msg').fadeIn();
+              return setTimeout(function() {
+                return $('#project-ok-msg').fadeOut('2500');
+              }, 1500);
+            }
+          },
+          error: function() {
+            return alert("可能由于网络原因,留言发送失败,请稍后再试");
+          }
+        });
+      }
+    };
+  
+  }).call(this);
+</script>
+
+<div id='gotop'></div>
+<style>
+  #gotop{
+  display: none;
+    width: 30px;
+    height: 32px;
+    position: fixed;
+    right: 65px;
+    cursor: pointer;
+    bottom: 50%;
+    margin-bottom: -127px;
+    border-radius: 10px;
+    opacity: 3;
+    background: url("/cd-top-arrow.svg") no-repeat 50% 50%;
+    background-color: #bab3b2;
+  }
+</style>
+<script>
+  function goTop(){
+    $(window).scroll(function(e) {
+      if($(this).scrollTop()>50){
+        $("#gotop").fadeIn(1000);
+        changCssWithStatus();
+      }
+      else
+        $("#gotop").fadeOut(1000);
+    });
+  };
+  $(function(){
+    $("#gotop").click(function(e) {
+      $('body,html').animate({scrollTop:0},500);
+    });
+    goTop();
+  });
+</script>
+
+<footer id='git-footer-main'>
+<div class='ui container'>
+<div class='ui two column grid'>
+<div class='column'>
+<p><a href="http://www.oschina.net" target="_blank">@OSChina.NET</a></p>
+<div class='ui two column grid'>
+<div class='column'>
+<div class='ui link list'>
+<div class='item'>
+<a href="/terms" class="item">使用条款</a>
+</div>
+<div class='item'>
+<a href="/piracy" class="item">隐私与安全</a>
+</div>
+<div class='item'>
+<a href="mailto:git@oschina.cn" class="item" onclick="return false;" title="Email: git#oschina.cn">联系我们
+</a></div>
+</div>
+</div>
+<div class='column'>
+<div class='ui link list'>
+<div class='item'>
+<a href="/appclient" class="item">APP下载</a>
+</div>
+<div class='item'>
+<a href="/links.html" class="item">友情链接</a>
+</div>
+<div class='item'>QQ交流群: 590057862</div>
+</div>
+</div>
+</div>
+</div>
+<div class='column right aligned followus'>
+<div class='qrcode weixin'>
+<p>微信公众号</p>
+<img alt="Qrcode-weixin" src="/assets/qrcode-weixin-0133b31ee0f8fd2d88eee0821788abda.jpg" />
+</div>
+<div class='qrcode weibo'>
+<p>微博</p>
+<a href="http://weibo.com/mayunOSC" target="_blank"><img alt="Qrcode-weibo" src="/assets/qrcode-weibo-f34c6c657c9e4204509917511c49c9ac.png" />
+</a></div>
+</div>
+</div>
+</div>
+<div class='bottombar'>
+<div class='ui container'>
+<div class='ui two column grid'>
+<div class='column'>
+本站带宽由 <a href="http://www.51idc.com/" target="_blank" title="51idc"><img alt="Logo-51idc" src="/assets/logo-51idc-f1307c11a026d708360f16b4060a2a9f.png" /></a> 提供
+</div>
+<div class='column right aligned'>
+<i class='icon world'></i>
+<a href="/language/zh-CN">简 体
+</a>/
+<a href="/language/zh-TW">繁 體
+</a>/
+<a href="/language/en">English
+</a></div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+  function force_mobile() {
+    current_url = window.location.href;
+    force_mobile_url = current_url.substr(0,current_url.indexOf('?'))+'?force_mobile=true';
+    location.href = force_mobile_url;
+  }
+  (function () {
+    // 更新底栏的位置，当页面内容高度小于窗口高度时，会将底栏浮动定位在窗口底端
+    function updateFooterPosition() {
+      var pageHeight = document.body.offsetHeight;
+      if ($footer.hasClass('fixed-bottom')) {
+        pageHeight += $footer.outerHeight();
+        if (pageHeight > $(window).height()) {
+          $footer.removeClass('fixed-bottom');
+        }
+      } else {
+        if (pageHeight < $(window).height()) {
+          $footer.addClass('fixed-bottom');
+        }
+      }
+    }
+    var $footer = $('#git-footer-main');
+    $(document).on('ready', updateFooterPosition);
+    $(window).on({
+      'scroll': updateFooterPosition,
+      'resize': updateFooterPosition
+    });
+    // 每隔一段时间检测页面高度变化，确保底栏能在页面最底端
+    setInterval(updateFooterPosition, 500);
+  })();
+</script>
+
+</body>
+</html>
+<script>
+  (function (ww, dt) {
+    ww.__gac = {
+      domain: 'www.oschina.net'
+    };
+    var script = dt.createElement('script');
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('src', '//www.oschina.net/public/javascripts/cjl/ga.js?t=20160926');
+    dt.body.appendChild(script);
+  } (window, window.document));
+</script>
