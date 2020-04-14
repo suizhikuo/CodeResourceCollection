@@ -1,6 +1,7 @@
 SELECT
-	concat( 'alter table ', TABLE_NAME, ' change column ', COLUMN_NAME, ' ', LOWER( COLUMN_NAME ), ' ', COLUMN_TYPE, ' comment '', COLUMN_COMMENT, '';' ) AS '修改脚本' 
+	concat( 'alter table ', TABLE_NAME, ' change column ', COLUMN_NAME, ' ', LOWER( COLUMN_NAME ), ' ', COLUMN_TYPE, ' comment \'', COLUMN_COMMENT, '\';' ) AS '修改脚本' 
 FROM
 	information_schema.COLUMNS 
 WHERE
-	TABLE_NAME = 'bo_project_info';
+	TABLE_SCHEMA = '对应的库' 
+	AND TABLE_NAME = '对应的表';
