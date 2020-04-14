@@ -1,6 +1,0 @@
-SELECT
-	concat( 'alter table ', 'bo_project_info', ' change  column ', COLUMN_NAME, ' ', LOWER( COLUMN_NAME ), ' ', COLUMN_TYPE, ' comment \'', COLUMN_COMMENT, '\';' ) AS '修改脚本' 
-FROM
-	information_schema.COLUMNS 
-WHERE
-	TABLE_NAME = 'bo_project_info';
