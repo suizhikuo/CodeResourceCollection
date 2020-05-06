@@ -1,8 +1,0 @@
-#SAP logon parameters:
-#Sat Apr 18 16:12:44 CST 2020
-jco.client.lang=EN
-jco.client.passwd=lmspass1
-jco.client.sysnr=00
-jco.client.client=301
-jco.client.user=internet5
-jco.client.ashost=10.122.1.146
