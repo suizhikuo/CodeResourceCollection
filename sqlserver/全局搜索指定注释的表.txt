@@ -1,0 +1,7 @@
+select top 1000 ROW_NUMBER() OVER (ORDER BY a.name)           AS No,
+                a.name                                        AS 表名,
+                CONVERT(NVARCHAR(100), isnull(g.[value], '')) AS 说明
+from sys.tables a
+         left join sys.extended_properties g
+                   on (a.object_id = g.major_id AND g.minor_id = 0)
+where CONVERT(NVARCHAR(100), isnull(g.[value], '')) like '%信息表%';

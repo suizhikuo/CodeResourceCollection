@@ -1,3 +1,0 @@
-select *
-from information_schema.COLUMNS
-where COLUMN_COMMENT like '%支付方式%';
