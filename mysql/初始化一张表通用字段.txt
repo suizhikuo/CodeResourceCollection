@@ -23,7 +23,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `test_tablename`;
 CREATE TABLE `test_tablename`  (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '自增主键',
-  `delete` bit(1) NULL DEFAULT b'0' COMMENT '是否删除(0:未删除,1已删除)',
+  `is_delete` bit(1) NULL DEFAULT b'0' COMMENT '是否删除(0:未删除,1已删除)',
   `create_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建人	',
   `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建日期',
   `update_by` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新人',
